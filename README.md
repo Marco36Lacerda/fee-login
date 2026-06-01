@@ -1,4 +1,4 @@
-# Gong Frontend Exercise
+# Frontend Exercise - Login
 
 A web application built with React, TypeScript, Vite, and Tailwind CSS as part of the Gong frontend engineering exercise.
 
@@ -40,24 +40,26 @@ The app will be available at `http://localhost:5173`.
 
 ## Project Structure
 
+```
 src/
 ├── components/
-│ ├── ProtectedRoute.tsx # Route guard for authenticated pages
-│ ├── TreeNode.tsx # Recursive tree node component
-│ └── UserBadge.tsx # Photo or initials avatar
+│   ├── ProtectedRoute.tsx   # Route guard for authenticated pages
+│   ├── TreeNode.tsx         # Recursive tree node component
+│   └── UserBadge.tsx        # Photo or initials avatar
 ├── hooks/
-│ ├── useAuth.ts # Login, logout, session management
-│ └── useUsers.ts # Fetch all users from Firebase
+│   ├── useAuth.ts           # Login, logout, session management
+│   └── useUsers.ts          # Fetch all users from Firebase
 ├── pages/
-│ ├── LoginPage.tsx # Login form
-│ └── HierarchyPage.tsx # Full hierarchy tree view
+│   ├── LoginPage.tsx        # Login form
+│   └── HierarchyPage.tsx    # Full hierarchy tree view
 ├── utils/
-│ ├── buildTree.ts # Builds tree structure from flat user array
-│ └── encode.ts # Encode function provided by Gong
-├── types.ts # Shared TypeScript interfaces
+│   ├── buildTree.ts         # Builds tree structure from flat user array
+│   └── encode.ts            # Encode function provided by Gong
+├── types.ts                 # Shared TypeScript interfaces
 ├── App.tsx
 ├── main.tsx
 └── index.css
+```
 
 ## Architecture Notes
 
