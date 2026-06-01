@@ -1,10 +1,8 @@
-import { useState } from "react";
 import type { TreeNode as TreeNodeType } from "../utils/buildTree";
 import UserBadge from "./UserBadge";
 
 function TreeNode({ node, depth = 0 }: { node: TreeNodeType; depth?: number }) {
   const { user, children, isManager } = node;
-  const [expanded, setExpanded] = useState(true);
 
   return (
     <div className="flex flex-col">
@@ -12,11 +10,12 @@ function TreeNode({ node, depth = 0 }: { node: TreeNodeType; depth?: number }) {
         className="flex items-center gap-3 py-2"
         style={{ paddingLeft: `${depth * 2.5}rem` }}
       >
-        <span
-          className={`w-4 text-purple-500 font-bold text-sm select-none ${isManager ? "cursor-pointer hover:text-purple-700" : ""}`}
-          onClick={() => isManager && setExpanded((prev) => !prev)}
-        >
-          {isManager ? (expanded ? "−" : "+") : "−"}
+        <span className="w-4 shrink-0 flex items-center justify-center">
+          {isManager ? (
+            <span className="text-purple-500 font-bold text-2xl">+</span>
+          ) : (
+            <span className="text-gray-400 text-2xl font-bold">−</span>
+          )}
         </span>
         <UserBadge user={user} />
         <div className="flex flex-col">
@@ -26,11 +25,9 @@ function TreeNode({ node, depth = 0 }: { node: TreeNodeType; depth?: number }) {
           <span className="text-xs text-gray-500">{user.email}</span>
         </div>
       </div>
-      {isManager &&
-        expanded &&
-        children.map((child) => (
-          <TreeNode key={child.user.id} node={child} depth={depth + 1} />
-        ))}
+      {children.map((child) => (
+        <TreeNode key={child.user.id} node={child} depth={depth + 1} />
+      ))}
     </div>
   );
 }
