@@ -21,9 +21,7 @@ export function useUsers() {
       try {
         const res = await fetch(`${FIREBASE_URL}/users.json`);
         const data = await res.json();
-        const parsed: RawUser[] = (data as RawUser[])
-          .filter(Boolean)
-          .map((user, index) => ({ ...user, id: index }));
+        const parsed: RawUser[] = (data as RawUser[]).filter(Boolean);
         setUsers(parsed);
       } catch {
         setError("Failed to load users.");

@@ -12,19 +12,22 @@ export function useAuth() {
     setError(null);
     try {
       const secret = encode(email, password);
-      const res = await fetch(`${FIREBASE_URL}/secrets/${secret}.json`);
-      const userId = await res.json();
+      const secretRes = await fetch(`${FIREBASE_URL}/secrets/${secret}.json`);
+      const userId = await secretRes.json();
+
       if (!userId) {
         setError("Invalid email or password.");
         return false;
       }
-      const userRes = await fetch(`${FIREBASE_URL}/users/${userId}.json`);
-      const user = await userRes.json();
+      const userRes = await fetch(`${FIREBASE_URL}/users.json`);
+      const users = await userRes.json();
+      const user = users.find((u: { id: number }) => u?.id === userId);
+
       if (!user) {
         setError("User not found.");
         return false;
       }
-      sessionStorage.setItem("user", JSON.stringify({ ...user, id: userId }));
+      sessionStorage.setItem("user", JSON.stringify(user));
       return true;
     } catch {
       setError("Something went wrong. Please try again.");
