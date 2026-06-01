@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { RawUser } from "../hooks/useUsers";
+import type { RawUser } from "../types";
 
 function UserBadge({ user }: { user: RawUser }) {
   const [imgError, setImgError] = useState(false);

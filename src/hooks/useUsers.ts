@@ -1,15 +1,7 @@
 import { useEffect, useState } from "react";
+import type { RawUser } from "../types";
 
 const FIREBASE_URL = "https://gongfetest.firebaseio.com";
-
-export interface RawUser {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  managerId?: number;
-  photo?: string;
-}
 
 export function useUsers() {
   const [users, setUsers] = useState<RawUser[]>([]);

@@ -1,4 +1,4 @@
-import type { TreeNode as TreeNodeType } from "../utils/buildTree";
+import type { TreeNode as TreeNodeType } from "../types";
 import UserBadge from "./UserBadge";
 
 function TreeNode({ node, depth = 0 }: { node: TreeNodeType; depth?: number }) {

@@ -1,10 +1,4 @@
-import type { RawUser } from "../hooks/useUsers";
-
-export interface TreeNode {
-  user: RawUser;
-  children: TreeNode[];
-  isManager: boolean;
-}
+import type { RawUser, TreeNode } from "../types";
 
 export function buildTree(users: RawUser[]): TreeNode[] {
   const managerIds = new Set(
