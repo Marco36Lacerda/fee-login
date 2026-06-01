@@ -1,8 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login, error, loading } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    const success = await login(email, password);
+    if (success) navigate("/hierarchy");
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -31,9 +40,14 @@ function LoginPage() {
               className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-purple-500"
             />
           </div>
+          {error && <p className="text-red-500 text-sm text-right">{error}</p>}
           <div className="flex justify-end mt-2">
-            <button className="px-6 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors text-sm cursor-pointer">
-              Login
+            <button
+              onClick={handleLogin}
+              disabled={loading}
+              className="px-6 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors text-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? "Logging in..." : "Login"}
             </button>
           </div>
         </div>
