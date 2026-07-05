@@ -1,6 +1,6 @@
 # Frontend Exercise - Login
 
-A web application built with React, TypeScript, Vite, and Tailwind CSS as part of the Gong frontend engineering exercise.
+A web application built with React, TypeScript, Vite, and Tailwind CSS as frontend engineering exercise.
 
 ## Features
 
